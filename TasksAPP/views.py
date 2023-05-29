@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-
 from TasksAPP.forms import CreateTaskForm
 from TasksAPP.models import Tasks
 
