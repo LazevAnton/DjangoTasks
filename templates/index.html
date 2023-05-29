@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>
+        Welcome to task manager😎
+    </h1>
+    {% if tasks %}
+        {% for t in tasks %}
+            <div class="alert alert-warning mt-2">
+                <h3>{{ t.task_title }}</h3>
+                <p>{{ t.task_description }}</p>
+                <p>Created - {{ t.created_at }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>
+            You dont have any task
+        </p>
+    {% endif %}
+{% endblock %}
