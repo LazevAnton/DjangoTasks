@@ -6,7 +6,8 @@ from TasksAPP.models import Tasks
 def index(request):
     tasks = Tasks.objects.order_by('-created_at')
     context = {
-        'tasks': tasks
+        'tasks': tasks,
+        'title': 'Tasks'
     }
     return render(request, 'index.html', context)
 
@@ -20,6 +21,7 @@ def create_task(request):
     else:
         form = CreateTaskForm()
     context = {
-        'form': form
+        'form': form,
+        'title': 'CreateTask'
     }
     return render(request, 'create_task.html', context)
