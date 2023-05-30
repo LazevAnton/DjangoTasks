@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from TasksAPP.forms import CreateTaskForm
 from TasksAPP.models import Tasks
 
@@ -25,3 +25,9 @@ def create_task(request):
         'title': 'CreateTask'
     }
     return render(request, 'create_task.html', context)
+
+
+def delete_task(request, task_id):
+    task = Tasks.objects.filter(id=task_id).first()
+    task.delete()
+    return redirect('HomePage')
