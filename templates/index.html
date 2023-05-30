@@ -7,13 +7,16 @@
         </h1>
         {% if tasks %}
             {% for t in tasks %}
-                <div class="alert alert-warning mt-2">
+                <div class="alert alert-warning mt-2" style="position: relative;">
                     <h3>{{ t.task_title }}</h3>
                     <p>{{ t.task_description }}</p>
                     <p>Created - {{ t.created_at }}</p>
-                    <button class="btn btn-primary btn-sm" style="position: absolute; top: 10px; right: 10px;">
-                        Done
-                    </button>
+                    <form method="post" action="{% url 'DeleteTask' t.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary btn-sm" style="position: absolute; top: 10px; right: 10px;">
+                            Done
+                        </button>
+                    </form>
                 </div>
             {% endfor %}
         {% else %}
