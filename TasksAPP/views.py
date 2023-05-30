@@ -27,7 +27,7 @@ def create_task(request):
     return render(request, 'create_task.html', context)
 
 
-def delete_task(request, task_id):
+def delete_task(request, task_id: int):
     task = Tasks.objects.filter(id=task_id).first()
     task.delete()
     return redirect('HomePage')
